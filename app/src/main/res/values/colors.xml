@@ -7,4 +7,21 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#A4DAED</color>
+    <color name="colorPrimaryVariant">#7FB8D3</color> <!-- 主色的深色变体 -->
+    <color name="colorSecondary">#879397</color>
+    <color name="colorSecondaryVariant">#6B7B7D</color> <!-- 次色的深色变体 -->
+    <color name="colorTertiary">#8F8FA3</color>
+    <color name="colorError">#FF5449</color>
+    <color name="colorNeutral">#909191</color>
+    <color name="colorBackground">#FFFFFF</color> <!-- 背景色 -->
+    <color name="colorSurface">#F2F2F2</color> <!-- 表面颜色 -->
+    <color name="colorOnPrimary">#000000</color> <!-- 主色上文本颜色 -->
+    <color name="colorOnSecondary">#FFFFFF</color> <!-- 次色上文本颜色 -->
+    <color name="colorOnTertiary">#000000</color> <!-- 第三色上文本颜色 -->
+    <color name="colorOnError">#FFFFFF</color> <!-- 错误色上文本颜色 -->
+    <color name="colorOnNeutral">#FFFFFF</color> <!-- 中性色上文本颜色 -->
+    <color name="colorOnBackground">#000000</color> <!-- 背景色上文本颜色 -->
+    <color name="colorOnSurface">#000000</color> <!-- 表面色上文本颜色 -->
 </resources>

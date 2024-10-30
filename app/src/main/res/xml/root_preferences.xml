@@ -1,23 +1,19 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="@string/messages_header">
+    <PreferenceCategory app:title="@string/settings_category_player">
 
-        <EditTextPreference
-            app:key="signature"
-            app:title="@string/signature_title"
-            app:useSimpleSummaryProvider="true" />
-
-        <ListPreference
-            app:defaultValue="reply"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/reply_values"
-            app:key="reply"
-            app:title="@string/reply_title"
-            app:useSimpleSummaryProvider="true" />
+        <SwitchPreferenceCompat
+            app:key="foreground_service"
+            app:title="@string/settings_player_foreground_title" />
 
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/settings_category_about">
+
+        <Preference
+            app:key="privacy"
+            app:summary="@string/settings_about_privacy_summary"
+            app:title="@string/settings_about_privacy_title" />
 
         <Preference
             app:key="license"
@@ -26,9 +22,10 @@
 
         <Preference
             app:key="code"
-            app:summary="@string/settings_about_source_summary"
+            app:summary="@string/settings_about_source_uri"
             app:title="@string/settings_about_source_title" />
 
     </PreferenceCategory>
+
 
 </PreferenceScreen>
