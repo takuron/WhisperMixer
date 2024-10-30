@@ -10,10 +10,11 @@ import com.takuron.whisperwavemixer.R
 
 
 class SettingsFragment : PreferenceFragmentCompat() {
-    val viewModel:SettingsViewModel by viewModels()
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
+
+        view?.setBackgroundColor(R.color.md_theme_background)
 
         findPreference<Preference>("code")
             ?.setOnPreferenceClickListener {

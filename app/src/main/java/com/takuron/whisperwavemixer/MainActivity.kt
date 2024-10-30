@@ -8,6 +8,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.takuron.whisperwavemixer.databinding.ActivityMainBinding
+import com.takuron.whisperwavemixer.ui.settings.SettingsActivity
+import com.takuron.whisperwavemixer.ui.startActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,10 +20,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val navView: BottomNavigationView = binding.navView
-
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         navView.setupWithNavController(navController)
+
+        binding.topToolBar.setOnMenuItemClickListener {
+            when(it.itemId){
+                R.id.appbar_settings -> { startActivity(SettingsActivity::class.java) }
+            }
+            return@setOnMenuItemClickListener true
+        }
     }
 }

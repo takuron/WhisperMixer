@@ -10,8 +10,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.WhisperWaveMixer"
+        android:theme="@style/AppTheme"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.settings.SettingsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_settings" />
+
         <service
             android:name=".service.PlayerService"
             android:enabled="true"
