@@ -1,5 +1,6 @@
 package com.takuron.whisperwavemixer.ui.settings
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -11,6 +12,7 @@ import com.takuron.whisperwavemixer.R
 
 class SettingsFragment : PreferenceFragmentCompat() {
 
+    @SuppressLint("ResourceAsColor")
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
 

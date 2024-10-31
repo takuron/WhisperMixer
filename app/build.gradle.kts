@@ -1,16 +1,18 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+
+    id("com.google.devtools.ksp")
 }
 
 android {
     namespace = "com.takuron.whisperwavemixer"
-    compileSdk = 35
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.takuron.whisperwavemixer"
         minSdk = 28
-        targetSdk = 35
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -56,6 +58,12 @@ dependencies {
 
     implementation(libs.androidx.media3.exoplayer)
     implementation(libs.androidx.media3.exoplayer.dash)
+
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler.v261)
+    ksp(libs.androidx.room.compiler.v261)
+    implementation(libs.androidx.room.ktx.v261)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
