@@ -9,12 +9,12 @@ import androidx.room.Query
 interface SourceFileDao {
     @Query("SELECT * FROM source_file")
     fun getAllSource():List<SourceFileData>
-    @Query("SELECT * FROM source_file WHERE category_id IS :category_id")
-    fun getSourceByCategory(category_id:Int):List<SourceFileData>
+    @Query("SELECT * FROM source_file WHERE category_id IS :categoryId")
+    fun getSourceByCategory(categoryId:Int):List<SourceFileData>
 
     @Insert
-    fun insertAll(vararg source_files:SourceFileData)
+    fun insertAll(vararg sourceFiles:SourceFileData)
 
     @Delete
-    fun delete(source_files:SourceFileData)
+    fun delete(sourceFiles:SourceFileData)
 }

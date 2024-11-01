@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_source"
-        android:name="com.takuron.whisperwavemixer.ui.source.SourceFragment"
+        android:name="com.takuron.whisperwavemixer.ui.source.SourcePageFragment"
         android:label="@string/title_source"
-        tools:layout="@layout/fragment_source" />
+        tools:layout="@layout/fragment_sourcepage" />
 
     <fragment
         android:id="@+id/navigation_dashboard"

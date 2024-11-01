@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.viewModels
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.takuron.whisperwavemixer.R
@@ -20,7 +19,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         findPreference<Preference>("code")
             ?.setOnPreferenceClickListener {
-                val url = requireContext().getText(R.string.settings_about_source_uri)
+                val url = requireContext().getText(R.string.settings_about_source_url)
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url.toString()))
                 activity?.startActivity(intent)
                 true

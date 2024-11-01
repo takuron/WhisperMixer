@@ -6,7 +6,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import android.provider.MediaStore
+import com.takuron.whisperwavemixer.data.source.SourceCategoryData
 import com.takuron.whisperwavemixer.data.source.SourceFileData
+import com.takuron.whisperwavemixer.sourceCategoryDao
 import com.takuron.whisperwavemixer.sourceFileDao
 import com.takuron.whisperwavemixer.utils.LogUtils
 import java.io.File
@@ -33,7 +35,7 @@ class SourcePresenter {
             val data = SourceFileData(
                 id = null,
                 title = getString(getColumnIndexOrThrow(AUDIO_INFO[0])),
-                categoryId = -1,
+                categoryId = 0,
                 file_path = file.path,
                 file_size = getString(getColumnIndexOrThrow(AUDIO_INFO[1])).toLong(),
             )
@@ -54,5 +56,9 @@ class SourcePresenter {
                 LogUtils.logE("write","error ${e.toString()}")
             }
         }?.close()
+    }
+
+    fun newCategory(scope: CoroutineScope, name:String) = scope.launch(Dispatchers.IO){
+        sourceCategoryDao.insertAll(SourceCategoryData(null,name))
     }
 }

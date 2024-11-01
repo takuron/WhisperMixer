@@ -22,7 +22,7 @@
 
         <Preference
             app:key="code"
-            app:summary="@string/settings_about_source_uri"
+            app:summary="@string/settings_about_source_url"
             app:title="@string/settings_about_source_title" />
 
     </PreferenceCategory>
