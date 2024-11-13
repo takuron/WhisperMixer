@@ -64,6 +64,8 @@ dependencies {
     ksp(libs.androidx.room.compiler.v261)
     implementation(libs.androidx.room.ktx.v261)
 
+    implementation (libs.retrofit2.retrofit)
+    implementation (libs.retrofit2.converter.moshi)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

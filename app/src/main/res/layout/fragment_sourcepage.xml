@@ -7,6 +7,49 @@
     android:layout_height="match_parent"
     tools:context=".ui.source.SourcePageFragment">
 
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/fatherScroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/categoryRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:nestedScrollingEnabled="false" />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Material3.TitleMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/source_file_list_title" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fileRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="180dp"
+                android:nestedScrollingEnabled="false" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/make_category_fab"
         style="?attr/floatingActionButtonSmallStyle"
@@ -43,7 +86,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintWidth_percent="0.4" />
+        app:layout_constraintWidth_percent="0.4"
+        tools:visibility="gone" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/nodataTextView"
@@ -51,10 +95,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:textAlignment="center"
         android:text="@string/source_nodata_message"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/nodataImageView"
         app:layout_constraintStart_toStartOf="@+id/nodataImageView"
-        app:layout_constraintTop_toBottomOf="@+id/nodataImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/nodataImageView"
+        tools:visibility="gone" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

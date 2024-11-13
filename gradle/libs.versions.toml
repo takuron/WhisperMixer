@@ -1,5 +1,6 @@
 [versions]
 agp = "8.6.0"
+converterMoshiVersion = "2.6.2"
 kotlin = "1.9.0"
 coreKtx = "1.10.1"
 junit = "4.13.2"
@@ -16,6 +17,7 @@ navigationFragmentKtx = "2.6.0"
 navigationUiKtx = "2.6.0"
 preference = "1.2.0"
 lifecycleService = "2.8.6"
+retrofitVersion = "2.8.1"
 roomCompiler = "v2.6.1"
 roomCompilerVersion = "2.6.1"
 roomKtx = "2.6.1"
@@ -43,6 +45,8 @@ androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navi
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 androidx-preference = { group = "androidx.preference", name = "preference", version.ref = "preference" }
 androidx-lifecycle-service = { group = "androidx.lifecycle", name = "lifecycle-service", version.ref = "lifecycleService" }
+retrofit2-converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "converterMoshiVersion" }
+retrofit2-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofitVersion" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -59,6 +59,6 @@ class SourcePresenter {
     }
 
     fun newCategory(scope: CoroutineScope, name:String) = scope.launch(Dispatchers.IO){
-        sourceCategoryDao.insertAll(SourceCategoryData(null,name))
+        sourceCategoryDao.insertAll(SourceCategoryData(null,name,0))
     }
 }

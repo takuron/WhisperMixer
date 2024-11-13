@@ -1,5 +1,6 @@
 package com.takuron.whisperwavemixer.ui.source
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ClipData
 import android.content.Intent
@@ -14,6 +15,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.divider.MaterialDivider
+import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.takuron.whisperwavemixer.R
 import com.takuron.whisperwavemixer.application
 import com.takuron.whisperwavemixer.databinding.FragmentSourcepageBinding
@@ -23,6 +29,8 @@ import kotlinx.coroutines.launch
 
 
 class SourcePageFragment : Fragment() {
+    private val categoryListAdapter by lazy { SourceCategoryListAdapter(ArrayList()) }
+    private val fileListAdapter by lazy { SourceFileListAdapter(ArrayList()) }
 
     private val sourceLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
@@ -32,7 +40,7 @@ class SourcePageFragment : Fragment() {
                 result.data?.clipData?.let { data: ClipData ->
                     lifecycleScope.launch(Dispatchers.Main) {
                         for (i in 0 until data.itemCount) {
-                            sourcePageViewModel.presenter.saveSource(this, data.getItemAt(i).uri)
+                            viewModel.presenter.saveSource(this, data.getItemAt(i).uri)
                                 .join()
                         }
                         Toast.makeText(application, "Success", Toast.LENGTH_SHORT).show()
@@ -41,7 +49,7 @@ class SourcePageFragment : Fragment() {
             } else
                 result.data?.data?.let { uri: Uri ->
                     lifecycleScope.launch(Dispatchers.Main) {
-                        sourcePageViewModel.presenter.saveSource(this, uri).join()
+                        viewModel.presenter.saveSource(this, uri).join()
                         Toast.makeText(application, "Success", Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -49,13 +57,57 @@ class SourcePageFragment : Fragment() {
         }
 
     private val binding by lazy { FragmentSourcepageBinding.inflate(layoutInflater) }
-    private val sourcePageViewModel: SourcePageViewModel by viewModels()
+    private val viewModel: SourcePageViewModel by viewModels()
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val context = requireContext()
+        binding.categoryRecyclerView.adapter = categoryListAdapter
+        binding.categoryRecyclerView.layoutManager = GridLayoutManager(context,2)
+
+        binding.fileRecyclerView.adapter = fileListAdapter
+        binding.fileRecyclerView.layoutManager = LinearLayoutManager(context)
+        binding.fileRecyclerView.addItemDecoration(MaterialDividerItemDecoration(context, LinearLayoutManager.VERTICAL).apply {
+            dividerInsetStart = 16
+            dividerInsetEnd = 16
+            isLastItemDecorated = false
+        })
+
+        viewModel.categoryListLiveData.observe(viewLifecycleOwner){
+            if(it.isNotEmpty() || viewModel.fileListLiveData.value?.isEmpty() == false) {
+                binding.nodataTextView.visibility = View.GONE
+                binding.nodataImageView.visibility = View.GONE
+                binding.fatherScroll.visibility = View.VISIBLE
+            }else{
+                binding.nodataTextView.visibility = View.VISIBLE
+                binding.nodataImageView.visibility = View.VISIBLE
+                binding.fatherScroll.visibility = View.GONE
+            }
+
+            categoryListAdapter.list = it
+            categoryListAdapter.notifyDataSetChanged()
+
+        }
+        viewModel.fileListLiveData.observe(viewLifecycleOwner){
+            if(it.isNotEmpty() || viewModel.categoryListLiveData.value?.isEmpty() == false) {
+                binding.nodataTextView.visibility = View.GONE
+                binding.nodataImageView.visibility = View.GONE
+                binding.fatherScroll.visibility = View.VISIBLE
+            }else{
+                binding.nodataTextView.visibility = View.VISIBLE
+                binding.nodataImageView.visibility = View.VISIBLE
+                binding.fatherScroll.visibility = View.GONE
+            }
+
+            fileListAdapter.list = it
+            fileListAdapter.notifyDataSetChanged()
+
+        }
+
 
         binding.addSourceFab.setOnClickListener {
             val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
@@ -71,9 +123,9 @@ class SourcePageFragment : Fragment() {
                 hintStringId = R.string.source_dialog_new_hint,
                 submitButtonStringId = R.string.app_dialog_save,
                 cancelButtonStringId = R.string.app_dialog_cancel
-            ) { dialog, id, text ->
+            ) { _, _, text ->
                 lifecycleScope.launch(Dispatchers.Main) {
-                    sourcePageViewModel.presenter.newCategory(this,text.toString())
+                    viewModel.presenter.newCategory(this,text.toString())
                 }
             }.show(childFragmentManager, "new_category")
         }
