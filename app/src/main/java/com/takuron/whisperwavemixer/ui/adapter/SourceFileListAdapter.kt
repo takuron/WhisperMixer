@@ -1,4 +1,4 @@
-package com.takuron.whisperwavemixer.ui.source
+package com.takuron.whisperwavemixer.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,7 +12,7 @@ class SourceFileListAdapter (var list:List<SourceFileData>) : RecyclerView.Adapt
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): SourceFileListViewHolder  = SourceFileListViewHolder(
+    ): SourceFileListViewHolder = SourceFileListViewHolder(
         ItemSourcepageFileBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,

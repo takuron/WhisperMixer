@@ -28,7 +28,7 @@
     <androidx.fragment.app.FragmentContainerView
         android:background="?attr/colorSurfaceContainerLow"
         android:id="@+id/settings"
-        android:name="com.takuron.whisperwavemixer.ui.settings.SettingsFragment"
+        android:name="com.takuron.whisperwavemixer.ui.fragment.SettingsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

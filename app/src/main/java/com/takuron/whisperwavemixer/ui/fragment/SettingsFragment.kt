@@ -1,4 +1,4 @@
-package com.takuron.whisperwavemixer.ui.settings
+package com.takuron.whisperwavemixer.ui.fragment
 
 import android.annotation.SuppressLint
 import android.content.Intent

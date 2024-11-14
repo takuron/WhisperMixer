@@ -1,4 +1,4 @@
-package com.takuron.whisperwavemixer.ui.source
+package com.takuron.whisperwavemixer.ui.fragment
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -15,17 +15,20 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.divider.MaterialDivider
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import com.takuron.whisperwavemixer.R
 import com.takuron.whisperwavemixer.application
 import com.takuron.whisperwavemixer.databinding.FragmentSourcepageBinding
 import com.takuron.whisperwavemixer.ui.dialog.TextInputDialog
+import com.takuron.whisperwavemixer.ui.adapter.SourceCategoryListAdapter
+import com.takuron.whisperwavemixer.ui.adapter.SourceFileListAdapter
+import com.takuron.whisperwavemixer.utils.ViewUtils
+import com.takuron.whisperwavemixer.viewmodel.SourcePageViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlin.math.roundToInt
 
 
 class SourcePageFragment : Fragment() {
@@ -72,8 +75,8 @@ class SourcePageFragment : Fragment() {
         binding.fileRecyclerView.adapter = fileListAdapter
         binding.fileRecyclerView.layoutManager = LinearLayoutManager(context)
         binding.fileRecyclerView.addItemDecoration(MaterialDividerItemDecoration(context, LinearLayoutManager.VERTICAL).apply {
-            dividerInsetStart = 16
-            dividerInsetEnd = 16
+            dividerInsetStart = ViewUtils.dp2px(16f).roundToInt()
+            dividerInsetEnd = ViewUtils.dp2px(16f).roundToInt()
             isLastItemDecorated = false
         })
 

@@ -1,4 +1,4 @@
-package com.takuron.whisperwavemixer.ui.source
+package com.takuron.whisperwavemixer.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,7 +14,7 @@ class SourceCategoryListAdapter(var list:List<SourceCategoryData>) : RecyclerVie
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): SourceCategoryListViewHolder  = SourceCategoryListViewHolder(
+    ): SourceCategoryListViewHolder = SourceCategoryListViewHolder(
         ItemSourcepageCategoryBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,

@@ -1,8 +1,7 @@
-package com.takuron.whisperwavemixer.ui.settings
+package com.takuron.whisperwavemixer.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.takuron.whisperwavemixer.R
 import com.takuron.whisperwavemixer.databinding.ActivitySettingsBinding
 
 class SettingsActivity : AppCompatActivity() {

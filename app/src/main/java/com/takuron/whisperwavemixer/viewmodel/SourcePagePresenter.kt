@@ -1,4 +1,4 @@
-package com.takuron.whisperwavemixer.ui.source
+package com.takuron.whisperwavemixer.viewmodel
 
 import android.net.Uri
 import com.takuron.whisperwavemixer.application
