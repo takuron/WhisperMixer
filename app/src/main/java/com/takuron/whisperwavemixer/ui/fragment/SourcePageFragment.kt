@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -28,6 +29,7 @@ import com.takuron.whisperwavemixer.utils.ViewUtils
 import com.takuron.whisperwavemixer.viewmodel.SourcePageViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.lang.ref.WeakReference
 import kotlin.math.roundToInt
 
 
@@ -72,6 +74,9 @@ class SourcePageFragment : Fragment() {
         binding.categoryRecyclerView.adapter = categoryListAdapter
         binding.categoryRecyclerView.layoutManager = GridLayoutManager(context,2)
 
+        fileListAdapter.apply {
+            fragmentManager = WeakReference<FragmentManager>(childFragmentManager)
+        }
         binding.fileRecyclerView.adapter = fileListAdapter
         binding.fileRecyclerView.layoutManager = LinearLayoutManager(context)
         binding.fileRecyclerView.addItemDecoration(MaterialDividerItemDecoration(context, LinearLayoutManager.VERTICAL).apply {

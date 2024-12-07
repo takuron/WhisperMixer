@@ -58,6 +58,7 @@ dependencies {
 
     implementation(libs.androidx.media3.exoplayer)
     implementation(libs.androidx.media3.exoplayer.dash)
+    implementation(libs.androidx.media3.ui)
 
     implementation(libs.androidx.room.runtime)
     annotationProcessor(libs.androidx.room.compiler.v261)
